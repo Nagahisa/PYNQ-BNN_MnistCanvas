@@ -42,7 +42,7 @@ def mnist():
 
     # Inference
     output = regression(input)
-    return jsonify(results=output)
+    return jsonify(result=output)
 
 
 @app.route('/')

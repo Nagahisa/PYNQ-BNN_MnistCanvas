@@ -9,10 +9,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPL3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sugyan/tensorflow-mnist.git"
+    "url": "https://github.com/Nagahisa/PNN-BNN_MnistCanvas.git"
   },
   "engines": {
     "node": "6.x"
