@@ -11,10 +11,10 @@ classifier = bnn.PynqBNN(network=bnn.NETWORK_LFC)
 
 classifier.load_parameters("mnist")
 
-
+image_file="/home/xilinx/bnn/data/image.images-idx3-ubyte"
 
 def regression(input):
-    y = classifier.inference("/home/xilinx/bnn/data/image.images-idx3-ubyte")
+    y = classifier.inference(image_file)
     print("Result:", y )
     return y
 
@@ -23,7 +23,7 @@ app = Flask(__name__)
 
 @app.route('/api/mnist', methods=['POST'])
 def mnist():
-    input = ((255 - np.array(request.json, dtype=np.uint8)) / 255.0).reshape(1,784)
+    input = (255 - np.array(request.json, dtype=np.uint8)).reshape(1,784)
 
 
     # Setting up the header of the MNIST format file        
@@ -36,9 +36,9 @@ def mnist():
     header[3] = 3 # Changing MSB for image data (0x00000803)
 
     for i in range(0,784):
-        header.append(int(input[0,i]))
+        header.append(input[0,i])
 
-    output_file = open('/home/xilinx/bnn/data/image.images-idx3-ubyte', 'wb')
+    output_file = open(image_file, 'wb')
     header.tofile(output_file)
     output_file.close()
 
