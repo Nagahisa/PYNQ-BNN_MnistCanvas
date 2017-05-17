@@ -2,8 +2,6 @@ from array import *
 import numpy as np
 from flask import Flask, jsonify, render_template, request
 
-from mnist import model
-
 import bnn
 print(bnn.available_params(bnn.NETWORK_LFC))
 
